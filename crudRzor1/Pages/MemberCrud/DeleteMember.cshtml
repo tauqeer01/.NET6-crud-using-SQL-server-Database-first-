@@ -1,0 +1,28 @@
+﻿@page
+@model crudRzor1.Pages.MemberCrud.DeleteMemberModel
+@using System.Data.SqlClient;
+@{
+    string Id = Request.Query["Id"];
+
+    try
+    {
+        string CS = "Data source=(localdb)\\mssqllocaldb;Database=CrudRazor;Trusted_Connection=True;";
+        using(SqlConnection Con = new SqlConnection(CS))
+        {
+            Con.Open();
+            string sql = "delete from memberMaster where Id=@Id";
+            using(SqlCommand cmd = new SqlCommand(sql, Con))
+            {
+                cmd.Parameters.AddWithValue("@Id",Id);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+    }
+    catch (Exception ex)
+    {
+        ex.ToString();
+    }
+
+    Response.Redirect("/MemberCrud/MemberList");
+}

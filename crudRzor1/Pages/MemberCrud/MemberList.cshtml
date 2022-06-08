@@ -1,0 +1,50 @@
+﻿@page
+@model crudRzor1.Pages.MemberCrud.MemberListModel
+@{
+}
+<div class="container mt-5">
+    <div class="mb-2">
+        <h1>List of Register member</h1>
+        <a asp-page="/MemberCrud/AddMember" class="btn btn-sm btn-primary offset-11">Add Member</a>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-strip">
+                <thead>
+                   
+                    
+                    <tr>
+                        <th>S/n</th>
+                        <th>Name</th>
+                        <th>Email</th>   
+                         <th>Address</th>
+                        <th>Created_at
+                        </th>
+                       
+                        <th>Edit</th>
+                        <th>Delete</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model.memberInfos)
+                    {
+                        
+                    
+                    <tr>
+                        <td>@item.Id</td>
+                          <td>@item.Name</td>
+                            <td>@item.Email</td>
+                              <td>@item.Address</td>
+                            <td>@item.Created_at</td>
+                            
+                              <td><a class="btn btn-secondary" href="/MemberCrud/UpdateMember?id=@item.Id">Edit</a></td>
+                              <td><a class="btn btn-danger" href="/MemberCrud/DeleteMember?Id=@item.Id">Delete</a></td>
+                                
+           </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

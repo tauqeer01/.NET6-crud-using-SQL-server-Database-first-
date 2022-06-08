@@ -1,0 +1,48 @@
+﻿@page
+@model crudRzor1.Pages.MemberCrud.AddMemberModel
+@{
+}
+
+<h2>Add New Member</h2>
+@if (Model.errorMessage.Length > 0)
+{
+    <div class=" alert alert-dismissible alert-warning fade show" role="alert">
+        <strong>@Model.errorMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss='alert' area-label='close'></button>
+    </div> 
+}
+<section class="mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form method="post">
+                <div class="form-group">
+    <label for="">Name</label>
+    <input type="text" class="form-control" name="name" value="@Model.memberInfo.Name" placeholder="Enter Name">
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" name="email" value="@Model.memberInfo.Email" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Password</label>
+    <input type="password" class="form-control" name="password" value="@Model.memberInfo.Password" placeholder="Enter password">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Address</label>
+    <input type="text" class="form-control" name="address" value="@Model.memberInfo.Address" placeholder="Enter Address">
+  </div>
+
+                @if (Model.successMessage.Length > 0)
+                {
+                    <div class=" alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>@Model.successMessage</strong>
+                        <button type="button" class="btn-close" data-ds-dismiss='alert' area-label='close'></button>
+                    </div>
+                }
+                <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+        </div>
+    </div>
+</section>
+
